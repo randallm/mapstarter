@@ -1,16 +1,23 @@
 Mapstarter
 ==========
 
-Mapstarter is a tool for turning a geographic data file into a map for the web.
+Fork of [https://github.com/veltman/mapstarter](https://github.com/veltman/mapstarter) for use with [redlining maps](https://dsl.richmond.edu/panorama/redlining/#loc=11/40.658/-74.394&mapview=graded&text=downloads).
 
-This is a work in progress.  Got ideas?  Requests?  Complaints?  Data files that didn't work?  Let me know! (see **Get in touch** below)
+Instructions for the layperson
+
+1. [Install node 14.4.0 from nodejs.org](https://nodejs.org/en/)
+2. Clone this repository and run `npm install`
+3. Modify colors as desired in `www/js/colorbrewer.js`
+3. Run `npm start` and visit `localhost` or `127.0.0.1` in your browser
+4. Download a geojson map from the richmond.edu link above
+5. Upload it to the local server
 
 How does it work?
 -----------------
 
 Select a GeoJSON file, TopoJSON file, or ESRI Shapefile.  It will import your data and give you a starting interactive map, automatically scaled to fit your data.  You can change the dimensions, map projection, color scheme, and add basic behaviors like zoom and tooltips. You can also inspect the data stored in your file in the "Data" tab.
 
-Once you've got something you like, you can export it in one of three formats:      
+Once you've got something you like, you can export it in one of three formats:
 
 * **SVG**: useful if you want a starting template to further customize as a flat graphic (e.g. in Adobe Illustrator).
 * **Image**: useful if you want an instant flat image of your map.
@@ -33,7 +40,7 @@ Who is this NOT for?
 
 People who want to edit their data a lot.  This lets you edit the attribute table, but if you want to do bulk, spreadsheet-style editing, you're going to have a bad time. See **Other tools and resources** below for some tools for this.
 
-People who want to make Google Maps-style tile maps that you can slip and slide around.  This is meant for more focused maps that ignore the world at large.  Think election maps.  See **Other tools and resources** below 
+People who want to make Google Maps-style tile maps that you can slip and slide around.  This is meant for more focused maps that ignore the world at large.  Think election maps.  See **Other tools and resources** below
 for some tools for tile maps.
 
 People who want to make complex, multilayered, or heavily stylized maps.  This may still provide a useful starting point for that, but it's not going to get you very far.
@@ -54,7 +61,7 @@ This will only work on modern browsers, and I wouldn't recommend using it on you
 
 To do list
 ----------
-      
+
 * Save a map to work on it later
 * Option to add data file to a communal library
 * Responsive scaling option for code download
@@ -79,7 +86,7 @@ The source is on Github: [https://github.com/veltman/mapstarter](https://github.
 You can email me at [noah@noahveltman.com](mailto:noah@noahveltman.com), or if you can keep it short, I'm [@veltman](https://twitter.com/veltman) on Twitter.
 
 Appendix: other tools and resources
------------------------------------      
+-----------------------------------
 * If you're a map-curious beginner, or just want to better understand what the hell GeoJSON and TopoJSON are, I wrote a [broad overview on geodata and web maps](https://github.com/veltman/learninglunches/tree/master/maps).
 * If you want to make a few basic edits to your underlying data, [geojson.io](http://geojson.io/) is pretty handy.  If you want to do more in-depth editing, you'll need desktop software. The fancy and very expensive option is [ArcGIS](http://www.esri.com/software/arcgis); I recommend [QGIS](http://www.qgis.org/), which is free, probably does everything you need, and is more beginner-friendly than you might think.
 * To convert a shapefile to GeoJSON, you can use ADC's [online converter](http://ogre.adc4gis.com/).
@@ -89,7 +96,7 @@ Appendix: other tools and resources
 * Shan Carter has a [nice tool for converting GeoJSON to TopoJSON](http://shancarter.github.io/distillery/).
 * If you want to make a tile map with custom tiles, you can get pretty far with [CloudMade](http://cloudmade.com/) or [MapBox](http://www.mapbox.com/).  For full control, you'll probably want to use [TileMill](http://mapbox.com/tilemill/).  Lisa Williams has a [tutorial on getting started with TileMill](http://dataforradicals.com/the-insanely-illustrated-guide-to-your-first-tile-mill-map/).
 * If you're in the choropleth business, the folks at MinnPost have a great utility for that called [Tulip](http://code.minnpost.com/tulip/) with much finer controls than this offers.
-* If you're a developer, [Kartograph.js](http://kartograph.org/) is a neat JavaScript library for building SVG maps that also includes support for IE7 and IE8.        
+* If you're a developer, [Kartograph.js](http://kartograph.org/) is a neat JavaScript library for building SVG maps that also includes support for IE7 and IE8.
 * If you want to build stuff out of geodata and you don't mind paying for the privilege and giving up some control over the details, [CartoDB](http://cartodb.com) offers a lot of features (Disclaimer: I've never used it).
 * For detailed geodata about the entire world, [OpenStreetMap](http://wiki.openstreetmap.org/wiki/Main_Page) is without equal, and has a vibrant ecosystem of lots of tools and services to help you extract specific data you want.  And it's free!
 * For semi-canonical shapefiles of countries of the world, states, provinces, coastlines, or other high-level features, try [Natural Earth Data](http://www.naturalearthdata.com/downloads/).  To get it as TopoJSON, try Mike Bostock's [World Atlas](https://github.com/mbostock/world-atlas) tool.
