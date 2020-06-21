@@ -32,7 +32,7 @@ function fixTopo(t) {
       t.objects[i] = {type: "GeometryCollection", geometries: [t.objects[i]]};
     }
   }
-  
+
   return t;
 
 }
@@ -49,15 +49,15 @@ function prettySize(size) {
 }
 
 //Compute the opposite color, for the default highlight color based on a given fill
-function oppositeColor(color) {        
+function oppositeColor(color) {
   var col = d3.hsl(color);
-  return d3.hsl((col.h+180) % 360,col.s,col.l).toString();        
+  return d3.hsl((col.h+180) % 360,col.s,col.l).toString();
 }
 
 //Attempt to detect a US map including AK and HI, switch to albersUsa
 //Mercator projection will also get tripped up something that crosses the
 //International Date Line, like Alaska, so switch to conicEqualArea
-function chooseDefaultProjection(data) {  
+function chooseDefaultProjection(data) {
   var a = d3.geo.area(data),
     b = d3.geo.bounds(data),
     c = d3.geo.centroid(data);
@@ -97,7 +97,7 @@ function isWorld(a) {
 //Attempt to detect bounds that cross IDL but aren't entire world; only affects things like mapping Alaska, or South Pacific islands
 //If the SW lng is greater than the NE lng, crosses the IDL
 //If the centroid is east of the SW lng or west of the NE lng, it's not a wraparound world map type situation
-function isWrapAround(b,c) {  
+function isWrapAround(b,c) {
   return (b[0][0] > b[1][0] && c[0] > (b[0][0] > 0 ? -(360-b[0][0]) : b[0][0]) && c[0] < (b[1][0] > 0 ? -(360-b[1][0]) : b[1][0]));
 }
 
@@ -114,11 +114,13 @@ function parseNumber(val) {
   }
 
   if (typeof val == "string") {
-    val = val.replace(/(\s|,)/g,'');
-
-    if (val.match(/^-?[0-9]*[.]?[0-9]+$/)) return parseFloat(val);
-
-    return null;
+    var attrMap = {
+      'A': 1.0,
+      'B': 2.0,
+      'C': 3.0,
+      'D': 4.0
+    }
+    return attrMap[val];
   }
 
   return null;

@@ -405,8 +405,8 @@ function showSection(section,preserveAlerts) {
 
 function populateScales() {
 
-  mapOptions.choropleth.buckets = parseInt($("select#color-choropleth-buckets").val());
-  mapOptions.choropleth.attribute = $("select#color-choropleth-attribute").val();
+  mapOptions.choropleth.buckets = 4;
+  mapOptions.choropleth.attribute = "holc_grade";
 
   var entries = d3.entries(colorbrewer[mapOptions.choropleth.type]).filter(function(d) {
       return d.value[mapOptions.choropleth.buckets];
@@ -498,9 +498,9 @@ function recolor(from) {
 function resetOptions() {
 
   //Set color scheme to simple
-  $("input#color-type-simple").prop("checked",true);
-  $("input#color-type-choropleth").prop("checked",false);
-  mapOptions.colorType = "simple";
+  $("input#color-type-simple").prop("checked",false);
+  $("input#color-type-choropleth").prop("checked",true);
+  mapOptions.colorType = "choropleth";
   d3.selectAll("div.panel-group.color-type").classed("hidden",true);
   d3.selectAll("div#color-"+mapOptions.colorType).classed("hidden",false);
 
